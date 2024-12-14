@@ -2548,7 +2548,7 @@ local loadgame2 = function(...)
 end
 local gameload = nil
 if game.PlaceId == 7336302630 then
-gameload = "Project Delta (🟢) \ CURRENT"
+gameload = "Project Delta (🟢) *CURRENT*"
 else
 gameload = "Project Delta (🟢)"
 end
@@ -2556,4 +2556,3 @@ local Loader = library:start({title = "silent.cc"})
 Loader:addgame({title = gameload, destroyuionpress = true, callback = loadgame1})
 Loader:addgame({title = "Trident Survival (🟣)", destroyuionpress = true, callback = loadgame2})
 Loader:addgame({title = "Fallen Survival (🟣)", destroyuionpress = true, callback = loadgame1})
-
