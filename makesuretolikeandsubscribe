@@ -1,14 +1,13 @@
--- variables
+
 local library = {ui={}};
 local coregui = game:GetService("CoreGui");
 local userin  = game:GetService("UserInputService");
 
--- etc variables
 local draggin = nil;
 local start   = nil;
 local pos     = nil;
 
--- drag function
+
 local function updatedrag(input, frame)
 	local delta = input.Position - start;
 	local position = UDim2.new(pos.X.Scale, pos.X.Offset + delta.X, pos.Y.Scale, pos.Y.Offset + delta.Y);
@@ -33,7 +32,7 @@ function library:start(customize)
     library.ui["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
     library.ui["2"]["Name"] = [[Main]];
 
-    do -- drag control
+    do 
         library.ui["2"].InputBegan:Connect(function(input)
             if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
                 draggin = true; start = input.Position; pos = library.ui["2"].Position;
@@ -114,7 +113,6 @@ function library:start(customize)
     library.ui["9"] = Instance.new("UIGradient", library.ui["8"]);
     library.ui["9"]["Transparency"] = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 1),NumberSequenceKeypoint.new(0.500, 0),NumberSequenceKeypoint.new(1.000, 1)};
 
-    -- GamesHolder
     library.ui["a"] = Instance.new("Frame", library.ui["2"]);
     library.ui["a"]["BorderSizePixel"] = 0;
     library.ui["a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
@@ -197,7 +195,6 @@ function library:start(customize)
         library.ui["10"]["Thickness"] = 1.4;
         library.ui["10"]["Color"] = Color3.fromRGB(31, 31, 31);
 
-        -- Name
         library.ui["11"] = Instance.new("TextLabel", library.ui["f"]);
         library.ui["11"]["TextWrapped"] = true;
         library.ui["11"]["BorderSizePixel"] = 0;
@@ -258,46 +255,41 @@ function library:start(customize)
 end
 
 local loadgame1 = function(...)
--- Countdown Pop-Up in Lua with Text Outline
 
--- Function to display a countdown message
 function showCountdown(seconds)
     local gui = Instance.new("ScreenGui")
     local textLabel = Instance.new("TextLabel")
     local outlineLabel = Instance.new("TextLabel")
 
     gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-    
-    -- Configure the outline label
+
     outlineLabel.Parent = gui
-    outlineLabel.Size = UDim2.new(0, 400, 0, 50)  -- Same size as the main text
-    outlineLabel.Position = UDim2.new(0.5, -200, 0.5, -25)  -- Centered
-    outlineLabel.TextColor3 = Color3.new(0, 0, 0)  -- Black color for the outline
-    outlineLabel.BackgroundTransparency = 1  -- No background
-    outlineLabel.TextScaled = true  -- Scale text
-    outlineLabel.Font = Enum.Font.SourceSans  -- Font style
-    outlineLabel.TextSize = 24  -- Smaller text size
-    outlineLabel.TextStrokeTransparency = 0  -- No transparency for the outline
+    outlineLabel.Size = UDim2.new(0, 400, 0, 50) 
+    outlineLabel.Position = UDim2.new(0.5, -200, 0.5, -25)  
+    outlineLabel.TextColor3 = Color3.new(0, 0, 0)  
+    outlineLabel.BackgroundTransparency = 1  
+    outlineLabel.TextScaled = true  
+    outlineLabel.Font = Enum.Font.SourceSans 
+    outlineLabel.TextSize = 24  
+    outlineLabel.TextStrokeTransparency = 0  
 
-    -- Configure the main text label
     textLabel.Parent = gui
-    textLabel.Size = UDim2.new(0, 400, 0, 50)  -- Same size as the outline
-    textLabel.Position = UDim2.new(0.5, -200, 0.5, -25)  -- Centered
-    textLabel.TextColor3 = Color3.new(1, 0, 1)  -- Purple color
-    textLabel.BackgroundTransparency = 1  -- No background
-    textLabel.TextScaled = true  -- Scale text
-    textLabel.Font = Enum.Font.SourceSans  -- Font style
-    textLabel.TextSize = 24  -- Smaller text size
+    textLabel.Size = UDim2.new(0, 400, 0, 50) 
+    textLabel.Position = UDim2.new(0.5, -200, 0.5, -25) 
+    textLabel.TextColor3 = Color3.new(1, 0, 1)
+    textLabel.BackgroundTransparency = 1  
+    textLabel.TextScaled = true  
+    textLabel.Font = Enum.Font.SourceSans  
+    textLabel.TextSize = 24  
 
-    -- Countdown loop
     for i = seconds, 1, -1 do
         outlineLabel.Text = "Please wait as we do our thing (" .. i .. ")"
-        textLabel.Text = outlineLabel.Text  -- Set the main text to the same as the outline
-        wait(1)  -- Wait for 1 second
+        textLabel.Text = outlineLabel.Text
+        wait(1)  
     end
 
-    textLabel.Text = "Enjoy!"  -- Final message
-    outlineLabel.Text = "Enjoy!"  -- Final message for the outline
+    textLabel.Text = "Enjoy!"  
+    outlineLabel.Text = "Enjoy!" 
     
 textLabel.Visible = false
 outlineLabel.Visible = false
@@ -417,8 +409,7 @@ local enables = {
 	IZh81 = "Watergun",
  }
  local utility = {}
- local functions = {} -- functions:name() to update or easier to find L
- --// Variables
+ local functions = {} 
  local workspace = game.Workspace
  local players = game:GetService("Players")
  local localplayer = players.LocalPlayer
@@ -434,7 +425,7 @@ local enables = {
  local realAmmoTypes = replicatestorage:FindFirstChild("realAmmoTypes") or replicatestorage:FindFirstChild("AmmoTypes") and replicatestorage:FindFirstChild("AmmoTypes"):Clone(); if realAmmoTypes then realAmmoTypes.Name = "realAmmoTypes" end
  local Snapline
 
- --// For ESP
+ --// ESP
  local Drawingnew = Drawing.new
  local Color3fromRGB = Color3.fromRGB
  local Vector3new = Vector3.new
@@ -453,9 +444,8 @@ local enables = {
      ["Deep Space"] = { ["SkyboxBk"] = "rbxassetid://159248188", ["SkyboxDn"] = "rbxassetid://159248183", ["SkyboxFt"] = "rbxassetid://159248187", ["SkyboxLf"] = "rbxassetid://159248173", ["SkyboxRt"] = "rbxassetid://159248192", ["SkyboxUp"] = "rbxassetid://159248176" },
      ["Winter"] = { ["SkyboxBk"] = "rbxassetid://510645155", ["SkyboxDn"] = "rbxassetid://510645130", ["SkyboxFt"] = "rbxassetid://510645179", ["SkyboxLf"] = "rbxassetid://510645117", ["SkyboxRt"] = "rbxassetid://510645146", ["SkyboxUp"] = "rbxassetid://510645195" },
      ["Clouded Sky"] = { ["SkyboxBk"] = "rbxassetid://252760981", ["SkyboxDn"] = "rbxassetid://252763035", ["SkyboxFt"] = "rbxassetid://252761439", ["SkyboxLf"] = "rbxassetid://252760980", ["SkyboxRt"] = "rbxassetid://252760986", ["SkyboxUp"] = "rbxassetid://252762652" },
-     --["test"] = {"SkyboxBk"="rbxassetid://","SkyboxDn"="rbxassetid://","SkyboxFt"="rbxassetid://","SkyboxLf"="rbxassetid://","SkyboxRt"="rbxassetid://","SkyboxUp"="rbxassetid://"},
+     --["testerbox"] = {"SkyboxBk"="rbxassetid://","SkyboxDn"="rbxassetid://","SkyboxFt"="rbxassetid://","SkyboxLf"="rbxassetid://","SkyboxRt"="rbxassetid://","SkyboxUp"="rbxassetid://"},
  }
- --// Drawing
  function utility:new(type, properties)
     local object = Drawing.new(type)
 
@@ -524,7 +514,6 @@ end
     }
 }
 
- --// Loadstrings
  local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Hl3n/silentcc/refs/heads/main/lib", true))()
 --  local esp = loadstring(game:HttpGet("https://raw.githubusercontent.com/BIvck/Skibidi/refs/heads/main/esp.lua", true))()
 
@@ -559,7 +548,6 @@ end
     Circle.Radius = radius
  end
 
- --// Target Closest
  function functions:TargetPlayer()
     local Target = nil
     local Name = nil
@@ -581,7 +569,6 @@ end
     end
     return Target
  end
- --// Visible Check!
  function functions:VisibleCheck(target)
     local cameraPos = camera.CFrame.Position
     local targetPos
@@ -631,7 +618,6 @@ end
 
 --// Crosshair
  local lines = {}
--- // Drawings
  local outline = utility:new("Square", {
     Visible = true,
     Size = Vector2.new(4, 4),
@@ -640,7 +626,6 @@ end
     ZIndex = 1,
     Transparency = 1,
  })
- --// Player Info
  local Target = utility:new("Text", {
     Font = 3,
     Size = 13,
@@ -685,7 +670,7 @@ end
     Text = "Not Visible",
     Position = Vector2.new(centerofscreen.X, (centerofscreen + Vector2.new(0, 100)).Y)
  })
---
+
 for i = 1, 4 do
     local line = utility:new("Line", {
         Visible = true,
@@ -696,7 +681,6 @@ for i = 1, 4 do
         ZIndex = 2,
         Transparency = 1,
     })
-    --
     local line_outline = utility:new("Line", {
         Visible = true,
         From = Vector2.new(200, 500),
@@ -706,10 +690,8 @@ for i = 1, 4 do
         ZIndex = 1,
         Transparency = 1,
     })
-    --
     lines[i] = { line, line_outline }
 end
--- // Main
 local angle = 0
 local transp = 0
 local reverse = false
@@ -877,13 +859,11 @@ game:GetService("RunService").RenderStepped:connect(function()
     end
 end)
 
- --// Combat
  local maintab = tabs.combat:createGroup('left', 'Aimbot')
  local maintab1 = tabs.combat:createGroup('center', 'Misc')
  local maintab2 = tabs.combat:createGroup('right', 'Gun Mods')
 
- --// Main aimbot/silentaim
- do -- Whoever got this script he's a nerd fuck that nigga
+ do
     maintab:addToggle({text = "silent aim", risky = true, callback = function(Value)
         enables.main.silent = Value
         functions:silentaim()
@@ -891,11 +871,6 @@ end)
     maintab:addToggle({text = "prediction", callback = function(Value)
         enables.main.prediction = Value
     end})
-    -- maintab:addToggle({text = "predict Y", callback = function(Value)
-    --     enables.main.bprediction = Value
-    -- end})
-    -- maintab:addLabel({text = "don't use pred Y"})
-    -- maintab:addLabel({text = "if ur using remove drop"})
     maintab:addList({text = "hitpart:",multiselect = false,values = {'Head','HumanoidRootPart'}, flag = "hitpart", callback = function(Value)
         enables.main.currenthitpart = Value
     end})
